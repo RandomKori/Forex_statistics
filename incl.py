@@ -2,6 +2,9 @@ import statsmodels.api as sm
 from datetime import datetime
 from numpy import cumsum, log, polyfit, sqrt, std, subtract
 from numpy.random import randn
+from numpy.random import seed
+from numpy.random import randn
+from scipy.stats import shapiro
 
 def statc(x):
     test = sm.tsa.adfuller(x)
@@ -29,3 +32,14 @@ def hurst(ts):
 
     # Return the Hurst exponent from the polyfit output
     return poly[0]*2.0
+
+def isnorm(x):
+    seed(1)
+    data = 5 * randn(100) + 50
+    stat, p = shapiro(x)
+    print('Statistics=%.3f, p=%.3f' % (stat, p))
+    alpha = 0.05
+    if p > alpha:
+        print('Нормальное распределение')
+    else:
+        print('Распределение не соответствует нормальному')
