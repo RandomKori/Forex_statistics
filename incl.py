@@ -37,7 +37,8 @@ def isnorm(x):
     seed(1)
     data = 5 * randn(100) + 50
     stat, p = shapiro(x)
-    print('Statistics=%.3f, p=%.3f' % (stat, p))
+    print('Statistics=', stat)
+    print ('p-value:=', p)
     alpha = 0.05
     if p > alpha:
         print('Нормальное распределение')
