@@ -5,6 +5,8 @@ from numpy.random import randn
 from numpy.random import seed
 from numpy.random import randn
 from scipy.stats import shapiro
+from statsmodels.graphics.gofplots import qqplot
+from matplotlib import pyplot
 
 def statc(x):
     test = sm.tsa.adfuller(x)
@@ -44,3 +46,8 @@ def isnorm(x):
         print('Нормальное распределение')
     else:
         print('Распределение не соответствует нормальному')
+
+def qqgraf(x):
+    qqplot(x, line='s')
+    pyplot.show()
+    
