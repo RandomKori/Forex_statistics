@@ -29,9 +29,9 @@ def regresion(x):
     model.compile(loss='mae', optimizer='sgd')
 
     print('Training -----------')
-    for step in range(301):
+    for step in range(10001):
         cost = model.train_on_batch(x_train, y_train)
-        if step % 10 == 0:
+        if step % 100 == 0:
             print('train cost: ', cost)
 
     print('\nTesting ------------')
