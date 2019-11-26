@@ -26,7 +26,7 @@ def regresion(x):
     model.add(ks.layers.Dense(10,activation='tanh'))
     model.add(ks.layers.Dense(10,activation='tanh'))
     model.add(ks.layers.Dense(1,activation='tanh'))
-    model.compile(loss='mse', optimizer='sgd')
+    model.compile(loss='mae', optimizer='sgd')
 
     print('Training -----------')
     for step in range(301):
