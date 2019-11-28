@@ -14,7 +14,7 @@ def covariance(sigma, rho):
 def analyze_standard(data):
     with pm.Model() as model:
         # priors
-        sigma = pm.Uniform('sigma', lower=0, upper=10, shape=2,
+        sigma = pm.Uniform('sigma', lower=0, upper=0.002, shape=2,
                            testval=[0.0001, 0.001],  # init with mad
                            transform=None)
         rho = pm.Uniform('r', lower=-1, upper=1,
