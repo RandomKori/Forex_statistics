@@ -14,7 +14,7 @@ def covariance(sigma, rho):
 def analyze_standard(data):
     with pm.Model() as model:
         # priors
-        sigma = pm.Uniform('sigma', lower=0, upper=0.002, shape=2,
+        sigma = pm.Uniform('sigma', lower=0, upper=0.001, shape=2,
                            testval=[0.0001, 0.001],  # init with mad
                            transform=None)
         rho = pm.Uniform('r', lower=-1, upper=1,
@@ -22,11 +22,11 @@ def analyze_standard(data):
                          transform=None)
 
         # print values for debugging
-        rho_p = Print('rho')(rho)
-        sigma_p = Print('sigma')(sigma)
+        rho_p = rho
+        sigma_p = sigma
 
         cov = pm.Deterministic('cov', covariance(sigma_p, rho_p))
-        cov_p = Print('cov')(cov)
+        cov_p = cov
 
         mult_norm = pm.MvNormal('mult_norm', mu=[10.1, 79.],  # set mu to median
                                 cov=cov_p, observed=data.T)
