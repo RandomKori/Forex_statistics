@@ -15,7 +15,7 @@ def analyze_robust1(data):
     with pm.Model() as model:
         # priors might be adapted here to be less flat
         mu = pm.Normal('mu', mu=0., sd=100., shape=2, testval=np.median(data.T, axis=1))
-        bound_sigma = pm.Bound(pm.Normal, lower=0., upper=0.001)
+        bound_sigma = pm.Bound(pm.Normal, lower=0.)
         sigma = bound_sigma('sigma', mu=0., sd=100., shape=2, testval=mad(data, axis=0))
         rho = pm.Uniform('r', lower=-1., upper=1., testval=0)
         cov = pm.Deterministic('cov', covariance(sigma, rho))
