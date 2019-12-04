@@ -24,3 +24,11 @@ def verbar(data):
     nr=n/len(data)
     nir=ni/len(data)
     return vr,nr,nir
+
+def vert(data):
+    g=0
+    for i in range(len(data)):
+        if data[i]!=0.0:
+            g=g+1
+    v=g/len(data)
+    return v
